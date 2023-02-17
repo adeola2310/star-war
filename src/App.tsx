@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { lazy, Suspense } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { Routes, Route} from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-function App() {
+const CharacterListViewPage = lazy(() => import('./pages/CharacterListView/CharacterListView'));
+const CharacterdetailsPage = lazy(()=> import ('./pages/CharacterDetails/CharacterDetails'))
+
+
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <QueryClientProvider client={queryClient}>
+        <Suspense fallback={<p>loading...</p>}>
+          <Routes>
+          <Route path="/" element={ <CharacterListViewPage/> } />
+          <Route path='/:id' element={ <CharacterdetailsPage/>} />
+          </Routes>
+        </Suspense>
+      </QueryClientProvider>
+
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
