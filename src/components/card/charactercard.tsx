@@ -17,7 +17,7 @@ const CharacterCard: FC<CharacterCardProp> = ({ character, id, homePlanet }: Cha
   }
 
   return (
-    <Card>
+    <Card data-testid="cards">
       <CardHeader>
         <Heading size='md'> {character.name}</Heading>
       </CardHeader>

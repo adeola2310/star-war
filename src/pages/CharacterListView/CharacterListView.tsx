@@ -1,8 +1,7 @@
 import { Flex, Text, Spinner, SimpleGrid } from '@chakra-ui/react';
 import useGetAllCharacterLists from '../../queries/useGetCharacterLists';
-import CharacterCard from '../../components/characterCard/charactercard';
+import CharacterCard from '../../components/card/charactercard';
 import useGetPlanets from '../../queries/useGetPlanets';
-// import { mappedPlanetTitle } from '../../util/mapPlanet';
 
 
 const CharacterListView = () => {
@@ -19,7 +18,7 @@ const CharacterListView = () => {
     }
 
     if (isLoading) {
-        return <Spinner size="xl" />
+        return <Spinner size="xl" data-testid="loading-spinner"/>
     }
 
     return (
