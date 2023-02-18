@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { characters } from "../../mocks/handlers/character/fixtures";
 import { server } from "../../mocks/server";
 import CharacterListView from "./CharacterListView";
 
@@ -39,7 +40,7 @@ describe("Character List View", () => {
     await waitFor(() =>
       expect(screen.queryByTestId("loading-spinner")).not.toBeInTheDocument()
     );
-    expect(screen.getAllByTestId("cards")).toHaveLength(10);
+    expect(screen.getAllByTestId("cards")).toHaveLength(characters.results.length);
   });
   it.skip('Renders Error text when backend server response with error', async () => {
     server.use(

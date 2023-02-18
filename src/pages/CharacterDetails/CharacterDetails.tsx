@@ -13,7 +13,7 @@ const CharacterDetailsPage = () => {
     const mappedPlanetTitle = new Map(planets?.results?.map((i: {url: string| undefined, name: string}) => [i.url, i.name]));
 
     if (isLoading) {
-        return <Spinner size="xl" />
+        return <Spinner size="xl" data-testid="loader"/>
     }
 
     const mappedFilm = new Map<string, string>(films?.results?.map((i: {url: string, title: string}) => [i.url, i.title]));
@@ -63,7 +63,7 @@ const CharacterDetailsPage = () => {
                             Film Tags
                         </Heading>
                         {
-                                <Flex mt={3}>
+                                <Flex mt={3} data-testid="film-tags">
                                     {
                                         data?.films?.map((film, i) => (
                                             <Tag key={i}> {mappedFilm?.get(film)}</Tag>
