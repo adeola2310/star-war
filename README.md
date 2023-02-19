@@ -5,8 +5,9 @@
 *```yarn```
 *```yarn start```
 
-## **How to run test**
-*```yarn test```
+## **How to run test coverage for all files**
+*```yarn test``` 
+* ```yarn test -- --coverage --watchAll=false```
 
 ## **Tools Used**
 * React, Typescript, Chakra UI, React Testing Library, Jest, React Query
